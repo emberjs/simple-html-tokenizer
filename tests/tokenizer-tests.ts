@@ -399,6 +399,46 @@ QUnit.test('Character references are expanded', function(assert) {
   ]);
 });
 
+// https://html.spec.whatwg.org/multipage/parsing.html#numeric-character-reference-end-state
+let numericCharRefCases: Array<[string, string, string]> = [
+  ['&#65;', 'A', 'decimal BMP code point'],
+  ['&#x41;', 'A', 'hex BMP code point'],
+  ['&#X41;', 'A', 'uppercase X hex prefix'],
+  ['&#128512;', '\uD83D\uDE00', 'decimal astral code point'],
+  ['&#x1F600;', '\uD83D\uDE00', 'hex astral code point'],
+  ['&#x10000;', '\uD800\uDC00', 'minimum astral code point'],
+  ['&#x10FFFF;', '\uDBFF\uDFFF', 'maximum code point'],
+  ['&#0;', '\uFFFD', 'NUL is replaced'],
+  ['&#xD800;', '\uFFFD', 'lone high surrogate is replaced'],
+  ['&#xDFFF;', '\uFFFD', 'lone low surrogate is replaced'],
+  ['&#x110000;', '\uFFFD', 'code point beyond Unicode range is replaced'],
+  ['&#x110041;', '\uFFFD', 'out-of-range code point does not wrap'],
+  ['&#99999999999999999999;', '\uFFFD', 'absurdly large code point is replaced'],
+  ['&#128;', '\u20AC', 'C1 0x80 is remapped to euro sign'],
+  ['&#146;', '\u2019', 'C1 0x92 is remapped to right single quote'],
+  ['&#150;', '\u2013', 'C1 0x96 is remapped to en dash'],
+  ['&#x9F;', '\u0178', 'C1 0x9F is remapped'],
+  ['&#x81;', '\u0081', 'C1 code point without a Windows-1252 mapping is kept'],
+  ['&#x7F;', '\u007F', 'DEL is kept']
+];
+
+numericCharRefCases.forEach(([source, expected, description]) => {
+  QUnit.test(`Numeric character reference ${source} in text (${description})`, function(assert) {
+    let tokens = tokenize(source);
+    assert.deepEqual(tokens, [chars(expected)]);
+  });
+
+  QUnit.test(`Numeric character reference ${source} in attribute (${description})`, function(assert) {
+    let tokens = tokenize(`<div title="${source}">`);
+    assert.deepEqual(tokens, [startTag('div', [['title', expected, true]])]);
+  });
+});
+
+QUnit.test('Numeric character references mix with surrounding text', function(assert) {
+  let tokens = tokenize('Don&#146;t miss the 9&#150;5 shift &#x1F600;');
+  assert.deepEqual(tokens, [chars('Don\u2019t miss the 9\u20135 shift \uD83D\uDE00')]);
+});
+
 // https://html.spec.whatwg.org/multipage/syntax.html#element-restrictions
 QUnit.test('A newline immediately following a <pre> tag is stripped', function(assert) {
   let tokens = tokenize("<pre>\nhello</pre>");
