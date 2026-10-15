@@ -22,7 +22,6 @@
     "build": "ember build",
     "lint": "tslint -p tsconfig.json",
     "prepare": "ember build",
-    "prepublish": "rm -rf node_modules/in-repo-commands && ln -s ../commands node_modules/in-repo-commands && rm -rf node_modules/symlink-self && ln -s ../lib/symlink-self node_modules/symlink-self",
     "test": "ember test && nyc qunit dist/tests/tests.js"
   },
   "devDependencies": {
@@ -35,13 +34,13 @@
     "broccoli-typescript-compiler": "^2.2.0",
     "ember-cli": "^3.0.0",
     "got": "^8.2.0",
-    "in-repo-commands": "file:./commands",
+    "in-repo-commands": "link:./commands",
     "nyc": "^11.4.1",
     "qunit": "^2.5.1",
     "release-it": "^14.0.2",
     "release-it-lerna-changelog": "^2.4.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "symlink-self": "file:./lib/symlink-self",
+    "symlink-self": "link:./lib/symlink-self",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2"
   },
@@ -62,5 +61,6 @@
       "release": true,
       "tokenRef": "GITHUB_AUTH"
     }
-  }
+  },
+  "packageManager": "pnpm@10.26.0"
 }
