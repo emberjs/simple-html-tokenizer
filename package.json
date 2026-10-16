@@ -52,6 +52,9 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "engines": {
+    "node": ">= 20.19"
+  },
   "release-it": {
     "plugins": {
       "release-it-lerna-changelog": {
