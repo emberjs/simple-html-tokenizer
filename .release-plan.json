@@ -1,30 +1,8 @@
 {
   "solution": {
     "simple-html-tokenizer": {
-      "impact": "major",
-      "oldVersion": "0.5.11",
-      "newVersion": "1.0.0",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "major",
-          "reason": "Appears in changelog section :boom: Breaking Change"
-        },
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./package.json"
+      "oldVersion": "1.0.0"
     }
   },
-  "description": "## Release (2026-10-16)\n\n* simple-html-tokenizer 1.0.0 (major)\n\n#### :boom: Breaking Change\n* `simple-html-tokenizer`\n  * [#124](https://github.com/emberjs/simple-html-tokenizer/pull/124) Rerun code generation scripts ([@ef4](https://github.com/ef4))\n  * [#123](https://github.com/emberjs/simple-html-tokenizer/pull/123) Replace TokenType and TokenizerState enums with literal union types ([@ef4](https://github.com/ef4))\n  * [#122](https://github.com/emberjs/simple-html-tokenizer/pull/122) Publish only es modules ([@ef4](https://github.com/ef4))\n  * [#120](https://github.com/emberjs/simple-html-tokenizer/pull/120) bump minimum node version to 20.19 ([@ef4](https://github.com/ef4))\n  * [#115](https://github.com/emberjs/simple-html-tokenizer/pull/115) Decode numeric character references the way HTML parsers do ([@ef4](https://github.com/ef4))\n\n#### :rocket: Enhancement\n* `simple-html-tokenizer`\n  * [#115](https://github.com/emberjs/simple-html-tokenizer/pull/115) Decode numeric character references the way HTML parsers do ([@ef4](https://github.com/ef4))\n\n#### :bug: Bug Fix\n* `simple-html-tokenizer`\n  * [#114](https://github.com/emberjs/simple-html-tokenizer/pull/114) allow elements to start with non-alpha chars to align with js vars ([@patricklx](https://github.com/patricklx))\n\n#### :house: Internal\n* `simple-html-tokenizer`\n  * [#121](https://github.com/emberjs/simple-html-tokenizer/pull/121) Cleanup leftover release-it references ([@ef4](https://github.com/ef4))\n  * [#119](https://github.com/emberjs/simple-html-tokenizer/pull/119) CI improvements ([@ef4](https://github.com/ef4))\n  * [#117](https://github.com/emberjs/simple-html-tokenizer/pull/117) Adding release plan ([@ef4](https://github.com/ef4))\n  * [#116](https://github.com/emberjs/simple-html-tokenizer/pull/116) Switch to pnpm ([@ef4](https://github.com/ef4))\n\n#### Committers: 2\n- Edward Faulkner ([@ef4](https://github.com/ef4))\n- Patrick Pircher ([@patricklx](https://github.com/patricklx))\n"
+  "description": "\n\n\n\n"
 }

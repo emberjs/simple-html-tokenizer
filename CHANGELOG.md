@@ -1,5 +1,10 @@
 # Changelog
 
+
+
+
+
+
 ## Release (2026-10-16)
 
 * simple-html-tokenizer 1.0.0 (major)
