@@ -39,11 +39,13 @@
     "qunit": "^2.5.1",
     "release-it": "^14.0.2",
     "release-it-lerna-changelog": "^2.4.0",
+    "release-plan": "^0.18.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "symlink-self": "link:./lib/symlink-self",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2"
   },
+  "packageManager": "pnpm@10.26.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
@@ -61,6 +63,5 @@
       "release": true,
       "tokenRef": "GITHUB_AUTH"
     }
-  },
-  "packageManager": "pnpm@10.26.0"
+  }
 }
