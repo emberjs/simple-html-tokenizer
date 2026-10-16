@@ -40,8 +40,6 @@
     "in-repo-commands": "link:./commands",
     "nyc": "^11.4.1",
     "qunit": "^2.5.1",
-    "release-it": "^14.0.2",
-    "release-it-lerna-changelog": "^2.4.0",
     "release-plan": "^0.18.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "symlink-self": "link:./lib/symlink-self",
@@ -54,20 +52,5 @@
   },
   "engines": {
     "node": ">= 20.19"
-  },
-  "release-it": {
-    "plugins": {
-      "release-it-lerna-changelog": {
-        "infile": "CHANGELOG.md",
-        "launchEditor": true
-      }
-    },
-    "git": {
-      "tagName": "v${version}"
-    },
-    "github": {
-      "release": true,
-      "tokenRef": "GITHUB_AUTH"
-    }
   }
 }
