@@ -101,17 +101,17 @@ export default class Tokenizer implements TokenizerDelegate {
 
   beginDoctype() {
     this.push({
-      type: TokenType.Doctype,
+      type: 'Doctype',
       name: '',
     });
   }
 
   appendToDoctypeName(char: string) {
-    this.current(TokenType.Doctype).name += char;
+    this.current('Doctype').name += char;
   }
 
   appendToDoctypePublicIdentifier(char: string) {
-    let doctype = this.current(TokenType.Doctype);
+    let doctype = this.current('Doctype');
 
     if (doctype.publicIdentifier === undefined) {
       doctype.publicIdentifier = char;
@@ -121,7 +121,7 @@ export default class Tokenizer implements TokenizerDelegate {
   }
 
   appendToDoctypeSystemIdentifier(char: string) {
-    let doctype = this.current(TokenType.Doctype);
+    let doctype = this.current('Doctype');
 
     if (doctype.systemIdentifier === undefined) {
       doctype.systemIdentifier = char;
@@ -136,13 +136,13 @@ export default class Tokenizer implements TokenizerDelegate {
 
   beginData() {
     this.push({
-      type: TokenType.Chars,
+      type: 'Chars',
       chars: ''
     });
   }
 
   appendToData(char: string) {
-    this.current(TokenType.Chars).chars += char;
+    this.current('Chars').chars += char;
   }
 
   finishData() {
@@ -153,13 +153,13 @@ export default class Tokenizer implements TokenizerDelegate {
 
   beginComment() {
     this.push({
-      type: TokenType.Comment,
+      type: 'Comment',
       chars: ''
     });
   }
 
   appendToCommentData(char: string) {
-    this.current(TokenType.Comment).chars += char;
+    this.current('Comment').chars += char;
   }
 
   finishComment() {
@@ -172,7 +172,7 @@ export default class Tokenizer implements TokenizerDelegate {
 
   beginStartTag() {
     this.push({
-      type: TokenType.StartTag,
+      type: 'StartTag',
       tagName: '',
       attributes: [],
       selfClosing: false
@@ -181,7 +181,7 @@ export default class Tokenizer implements TokenizerDelegate {
 
   beginEndTag() {
     this.push({
-      type: TokenType.EndTag,
+      type: 'EndTag',
       tagName: ''
     });
   }
@@ -191,12 +191,12 @@ export default class Tokenizer implements TokenizerDelegate {
   }
 
   markTagAsSelfClosing() {
-    this.current(TokenType.StartTag).selfClosing = true;
+    this.current('StartTag').selfClosing = true;
   }
 
   // Tags - name
   appendToTagName(char: string) {
-    this.current(TokenType.StartTag, TokenType.EndTag).tagName += char;
+    this.current('StartTag', 'EndTag').tagName += char;
   }
 
   // Tags - attributes
@@ -218,7 +218,7 @@ export default class Tokenizer implements TokenizerDelegate {
   }
 
   finishAttributeValue() {
-    this.current(TokenType.StartTag).attributes.push(this._currentAttribute!);
+    this.current('StartTag').attributes.push(this._currentAttribute!);
   }
 
   reportSyntaxError(message: string) {

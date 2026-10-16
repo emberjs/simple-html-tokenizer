@@ -30,39 +30,33 @@ export interface TokenBase<T extends TokenType> {
   loc?: Location;
 }
 
-export interface Doctype extends TokenBase<TokenType.Doctype> {
+export interface Doctype extends TokenBase<'Doctype'> {
   name: string;
   publicIdentifier?: string;
   systemIdentifier?: string;
 }
 
-export interface StartTag extends TokenBase<TokenType.StartTag> {
+export interface StartTag extends TokenBase<'StartTag'> {
   tagName: string;
   attributes: Attribute[];
   selfClosing: boolean;
 }
 
-export interface EndTag extends TokenBase<TokenType.EndTag> {
+export interface EndTag extends TokenBase<'EndTag'> {
   tagName: string;
 }
 
-export interface Chars extends TokenBase<TokenType.Chars> {
+export interface Chars extends TokenBase<'Chars'> {
   chars: string;
 }
 
-export interface Comment extends TokenBase<TokenType.Comment> {
+export interface Comment extends TokenBase<'Comment'> {
   chars: string;
 }
 
 export type Token = StartTag | EndTag | Chars | Comment | Doctype;
 
-export enum TokenType {
-  Doctype = 'Doctype',
-  StartTag = 'StartTag',
-  EndTag = 'EndTag',
-  Chars = 'Chars',
-  Comment = 'Comment'
-}
+export type TokenType = 'Doctype' | 'StartTag' | 'EndTag' | 'Chars' | 'Comment';
 
 export interface TokenMap {
   StartTag: StartTag;
@@ -108,4 +102,4 @@ export interface TokenizerDelegate {
   reportSyntaxError(error: string): void;
 }
 
-export { TokenizerState } from './generated/tokenizer-states.js';
+export type { TokenizerState } from './generated/tokenizer-states.js';

@@ -10,8 +10,7 @@ export default function buildTokenizerStates(syntax) {
     });
     states.push(state);
   }
-  return `export enum TokenizerState {
-${states.map(s => `  ${s} = '${s}'`).join(',\n')}
-}
+  return `export type TokenizerState =
+${states.map(s => `  | '${s}'`).join('\n')};
 `;
 }

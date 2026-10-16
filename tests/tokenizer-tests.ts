@@ -9,7 +9,6 @@ import {
   Comment,
   Chars,
   Token,
-  TokenType,
   Attribute
 } from 'simple-html-tokenizer';
 
@@ -619,14 +618,14 @@ QUnit.test('tokens: comment start-tag Chars end-tag', function(assert) {
 
 function chars(s?: string): Chars {
   return {
-    type: TokenType.Chars,
+    type: 'Chars',
     chars: s === undefined ? '' : s
   };
 }
 
 function comment(s?: string): Comment {
   return {
-    type: TokenType.Comment,
+    type: 'Comment',
     chars: s === undefined ? '' : s
   };
 }
@@ -637,7 +636,7 @@ function startTag(
   selfClosing?: boolean
 ): StartTag {
   return {
-    type: TokenType.StartTag,
+    type: 'StartTag',
     tagName: tagName,
     attributes: attributes === undefined ? [] : attributes,
     selfClosing: selfClosing === undefined ? false : selfClosing
@@ -646,14 +645,14 @@ function startTag(
 
 function endTag(tagName: string): EndTag {
   return {
-    type: TokenType.EndTag,
+    type: 'EndTag',
     tagName: tagName
   };
 }
 
 function doctype(publicIdentifier?: string, systemIdentifier?: string): Doctype {
   let doctype: Doctype = {
-    type: TokenType.Doctype,
+    type: 'Doctype',
     name: 'html',
   };
 
