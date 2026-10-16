@@ -1,24 +1,11 @@
-'use strict';
-const tokenizerStates = require('./codegen/tokenizer-states');
-const codegen = require('./codegen');
-const path = require('path');
+import codegen from './codegen.js';
+import tokenizerStates from './codegen/tokenizer-states.js';
 
-module.exports = {
-  name: 'build-tokenizer-states',
-  works: 'insideProject',
-  description: `Rebuild "tokenizer-states"`,
-
-  availableOptions: [],
-
-  run() {
-    return codegen(
-      this.ui,
-      'w3c',
-      'html',
-      'master',
-      'sections/syntax.include',
-      path.join(this.project.root, 'src', 'generated', 'tokenizer-states.ts'),
-      tokenizerStates
-    );
-  }
-};
+await codegen(
+  'w3c',
+  'html',
+  'master',
+  'sections/syntax.include',
+  new URL('../src/generated/tokenizer-states.ts', import.meta.url),
+  tokenizerStates
+);

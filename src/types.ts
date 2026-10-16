@@ -56,7 +56,7 @@ export interface Comment extends TokenBase<TokenType.Comment> {
 
 export type Token = StartTag | EndTag | Chars | Comment | Doctype;
 
-export const enum TokenType {
+export enum TokenType {
   Doctype = 'Doctype',
   StartTag = 'StartTag',
   EndTag = 'EndTag',
@@ -108,4 +108,4 @@ export interface TokenizerDelegate {
   reportSyntaxError(error: string): void;
 }
 
-export { TokenizerState } from './generated/tokenizer-states';
+export { TokenizerState } from './generated/tokenizer-states.js';

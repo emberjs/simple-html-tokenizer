@@ -1,0 +1,12 @@
+{
+  // Compiles the tests against the *built* package (resolved through the
+  // package's own `exports`), so they exercise what we actually publish.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "rootDir": "tests",
+    "outDir": "tmp/tests",
+    "paths": {}
+  },
+  "files": ["tests/tokenizer-tests.ts"]
+}
