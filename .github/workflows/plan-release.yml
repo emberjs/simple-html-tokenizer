@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - master
   pull_request_target: # This workflow has permissions on the repo, do NOT run code from PRs in this workflow. See https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
     types:
       - labeled
@@ -23,7 +22,7 @@ jobs:
     steps:
       - uses: release-plan/actions/should-prepare-release@v1
         with:
-          ref: 'master'
+          ref: 'main'
         id: should-prepare
 
   create-prepare-release-pr:
@@ -40,7 +39,7 @@ jobs:
       - uses: release-plan/actions/prepare@v1
         name: Run release-plan prepare
         with:
-          ref: 'master'
+          ref: 'main'
         env:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
         id: explanation

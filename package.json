@@ -20,7 +20,9 @@
   ],
   "scripts": {
     "build": "ember build",
-    "lint": "tslint -p tsconfig.json",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:tsc": "tsc --noEmit",
+    "lint:tslint": "tslint -p tsconfig.json",
     "prepare": "ember build",
     "test": "ember test && nyc qunit dist/tests/tests.js"
   },
@@ -32,6 +34,7 @@
     "broccoli-rollup": "^2.0.0",
     "broccoli-tslinter": "^3.0.1",
     "broccoli-typescript-compiler": "^2.2.0",
+    "concurrently": "^9.2.5",
     "ember-cli": "^3.0.0",
     "got": "^8.2.0",
     "in-repo-commands": "link:./commands",

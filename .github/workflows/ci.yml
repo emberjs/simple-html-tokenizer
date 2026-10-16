@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -19,4 +19,5 @@ jobs:
         node-version: 20.x
         cache: pnpm
     - run: pnpm install --frozen-lockfile
+    - run: pnpm lint
     - run: pnpm test
