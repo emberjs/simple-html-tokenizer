@@ -1,8 +1,7 @@
-'use strict';
 const STATE_REGEX = /tokenizer-([\w-]+?)-state/g;
 const KEBOB_REGEX = /-([a-z])/g;
 
-module.exports = function buildTokenizerStates(syntax) {
+export default function buildTokenizerStates(syntax) {
   const states = ['beforeData'];
   let m;
   while ((m = STATE_REGEX.exec(syntax))) {
@@ -11,8 +10,8 @@ module.exports = function buildTokenizerStates(syntax) {
     });
     states.push(state);
   }
-  return `export const enum TokenizerState {
+  return `export enum TokenizerState {
 ${states.map(s => `  ${s} = '${s}'`).join(',\n')}
 }
 `;
-};
+}

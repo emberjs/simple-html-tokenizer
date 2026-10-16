@@ -1,7 +1,7 @@
-import Tokenizer from './tokenizer';
-import EntityParser from './entity-parser';
-import namedCharRefs from './generated/html5-named-char-refs';
-import { TokenizerOptions, Token } from './types';
+import Tokenizer from './tokenizer.js';
+import EntityParser from './entity-parser.js';
+import namedCharRefs from './generated/html5-named-char-refs.js';
+import { TokenizerOptions, Token } from './types.js';
 
 export default function tokenize(
   input: string,

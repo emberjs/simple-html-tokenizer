@@ -11,40 +11,38 @@
     "url": "https://github.com/tildeio/simple-html-tokenizer.git"
   },
   "license": "MIT",
-  "main": "dist/simple-html-tokenizer.js",
-  "module": "dist/es6/index.js",
-  "types": "dist/types/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
-    "dist",
-    "!dist/tests"
+    "dist"
   ],
   "scripts": {
-    "build": "ember build",
+    "build": "pnpm clean && concurrently \"pnpm:build:*\" --names \"build:\" --prefixColors auto",
+    "build:js": "rolldown -c",
+    "build:types": "tsc -p tsconfig.build.json",
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\"",
+    "codegen:char-refs": "node commands/build-char-refs.js",
+    "codegen:tokenizer-states": "node commands/build-tokenizer-states.js",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:oxlint": "oxlint --deny-warnings",
     "lint:tsc": "tsc --noEmit",
-    "lint:tslint": "tslint -p tsconfig.json",
-    "prepare": "ember build",
-    "test": "ember test && nyc qunit dist/tests/tests.js"
+    "prepare": "pnpm build",
+    "test": "pnpm build && tsc -p tsconfig.tests.json && qunit tmp/tests/tokenizer-tests.js"
   },
   "devDependencies": {
-    "@types/qunit": "^2.5.0",
-    "broccoli-concat": "^3.0.5",
-    "broccoli-funnel": "^2.0.1",
-    "broccoli-merge-trees": "^3.0.0",
-    "broccoli-rollup": "^2.0.0",
-    "broccoli-tslinter": "^3.0.1",
-    "broccoli-typescript-compiler": "^2.2.0",
+    "@types/qunit": "^2.19.14",
     "concurrently": "^9.2.5",
-    "ember-cli": "^3.0.0",
-    "got": "^8.2.0",
-    "in-repo-commands": "link:./commands",
-    "nyc": "^11.4.1",
-    "qunit": "^2.5.1",
+    "oxlint": "^1.88.0",
+    "qunit": "^2.26.0",
     "release-plan": "^0.18.0",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "symlink-self": "link:./lib/symlink-self",
-    "tslint": "^5.9.1",
-    "typescript": "^2.7.2"
+    "rolldown": "^1.2.14",
+    "typescript": "^7.0.2"
   },
   "packageManager": "pnpm@10.26.0",
   "publishConfig": {

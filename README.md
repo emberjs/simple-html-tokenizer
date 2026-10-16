@@ -31,12 +31,14 @@ tokenizer errors in debug mode.
 
 # Usage
 
-You can tokenize HTML:
+This package is published as ES modules only. You can tokenize HTML:
 
 ```js
-var tokens = HTML5Tokenizer.tokenize("<div id='foo' href=bar class=\"bat\">");
+import { tokenize } from 'simple-html-tokenizer';
 
-var token = tokens[0];
+let tokens = tokenize("<div id='foo' href=bar class=\"bat\">");
+
+let token = tokens[0];
 token.tagName     //=> "div"
 token.attributes  //=> [["id", "foo"], ["href", "bar"], ["class", "bat"]]
 token.selfClosing //=> false
@@ -45,6 +47,13 @@ token.selfClosing //=> false
 ## Building and running the tests
 
 ```bash
-npm install
-npm test
+pnpm install
+pnpm test
+```
+
+To regenerate the files in `src/generated` from the upstream W3C HTML spec:
+
+```bash
+pnpm codegen:char-refs
+pnpm codegen:tokenizer-states
 ```

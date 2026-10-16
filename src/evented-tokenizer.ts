@@ -1,5 +1,5 @@
-import { preprocessInput, isSpace } from './utils';
-import { EntityParser, TokenizerDelegate, TokenizerState } from './types';
+import { preprocessInput, isSpace } from './utils.js';
+import { EntityParser, TokenizerDelegate, TokenizerState } from './types.js';
 
 export default class EventedTokenizer {
   public state: TokenizerState = TokenizerState.beforeData;

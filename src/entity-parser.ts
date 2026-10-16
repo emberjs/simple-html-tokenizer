@@ -1,4 +1,4 @@
-import { NamedEntityMap } from './types';
+import { NamedEntityMap } from './types.js';
 
 const HEXCHARCODE = /^#[xX]([A-Fa-f0-9]+)$/;
 const CHARCODE = /^#([0-9]+)$/;

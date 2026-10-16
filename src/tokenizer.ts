@@ -1,4 +1,4 @@
-import EventedTokenizer from './evented-tokenizer';
+import EventedTokenizer from './evented-tokenizer.js';
 import {
   Attribute,
   EntityParser,
@@ -7,7 +7,7 @@ import {
   TokenMap,
   TokenType,
   TokenizerOptions
-} from './types';
+} from './types.js';
 
 export default class Tokenizer implements TokenizerDelegate {
   private token: Token | null = null;
