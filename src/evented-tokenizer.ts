@@ -1,4 +1,4 @@
-import { preprocessInput, isAlpha, isSpace } from './utils';
+import { preprocessInput, isSpace } from './utils';
 import { EntityParser, TokenizerDelegate, TokenizerState } from './types';
 
 export default class EventedTokenizer {
