@@ -9,6 +9,10 @@ export default function buildTokenizerStates(syntax) {
       return g[1].toUpperCase();
     });
     states.push(state);
+    // Not in the spec: used to detect closing pre/textarea tags.
+    if (state === 'tagName') {
+      states.push('endTagName');
+    }
   }
   return `export type TokenizerState =
 ${states.map(s => `  | '${s}'`).join('\n')};

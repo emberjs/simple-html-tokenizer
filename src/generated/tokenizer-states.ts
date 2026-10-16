@@ -1,5 +1,5 @@
 /**
- * generated from https://raw.githubusercontent.com/w3c/html/26b5126f96f736f796b9e29718138919dd513744/sections/syntax.include
+ * generated from https://raw.githubusercontent.com/w3c/html/2ef7a579bcfd2693b98df35f20e51dff60e3fbef/sections/syntax.include
  * do not edit
  */
 export type TokenizerState =
@@ -23,7 +23,7 @@ export type TokenizerState =
   | 'scriptDataEndTagOpen'
   | 'scriptDataEndTagName'
   | 'scriptDataEscapeStart'
-  | 'scriptDataEscapseStartDash'
+  | 'scriptDataEscapeStartDash'
   | 'scriptDataEscaped'
   | 'scriptDataEscapedDash'
   | 'scriptDataEscapedDashDash'
